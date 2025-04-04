@@ -1,0 +1,15 @@
+{
+  "name": "Stomatoloji Diaqnostika Merkezi",
+  "short_name": "sdm-app",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+        {
+            "src": "icon.png",
+            "sizes": "196x196",
+            "type": "image/png"
+        }
+    ]
+}
