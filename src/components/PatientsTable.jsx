@@ -6,6 +6,7 @@ import Highlighter from 'react-highlight-words';
 import React, { useContext, useRef, useState } from 'react'
 import '@ant-design/v5-patch-for-react-19';
 import { UserContext } from '@/services/context/UserContext';
+import { useRouter } from 'next/navigation';
 
 const handleDownload = async (urls) => {
   for (const url of urls) {
@@ -34,6 +35,7 @@ const handleDownload = async (urls) => {
 
 function PatientsTable({patients,handleDeletePatient}) {
   const {user} = useContext(UserContext)
+  const router = useRouter();
   // console.log(patients);
 
   const [searchText, setSearchText] = useState('');
@@ -164,6 +166,9 @@ function PatientsTable({patients,handleDeletePatient}) {
           <Button onClick={() => handleDownload(record.fileURLs)} type='primary'>
             Yüklə
           </Button>
+          <Button onClick={() => {router.push(`patient/${record.key}`)}}>
+            Bax
+          </Button>
           {/* <Button onClick={()=>record.key} >
             Düzəlt
           </Button> */}
@@ -212,6 +217,9 @@ function PatientsTable({patients,handleDeletePatient}) {
         <div className='flex gap-2'>
           <Button onClick={() => handleDownload(record.fileURLs)} type='primary'>
             Yüklə
+          </Button>
+          <Button onClick={() => {router.push(`patient/${record.key}`)}}>
+            Bax
           </Button>
         </div>
       ),
