@@ -25,7 +25,7 @@ function doctors() {
           setDoctors(res.map(doctor=>{
             doctor.key = doctor.id
             return doctor
-          }))
+          }).reverse())
         })
         .catch(err=>{
           toast.error(err.response.data)
@@ -49,7 +49,7 @@ function doctors() {
     function handleAddDoctor(data){
       addDoctor(data)
       .then(res => {
-        setDoctors([...doctors,{...res.user,key:res.user.id}]);
+        setDoctors([{...res.user,key:res.user.id}, ...doctors]);
         toast.success(res.message);
       })
       .catch(err=>{
