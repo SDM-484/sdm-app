@@ -19,7 +19,7 @@ export default function Home() {
       setPatients(res.map(patient=>{
         patient.key = patient._id
         return patient
-      }))
+      }).reverse())
     })
     .catch(err=>{
       toast.error(err.response.data)
@@ -42,7 +42,7 @@ export default function Home() {
     addPatient(values)
     .then(res=>{
       res.user.key = res.user._id;
-      setPatients([...patients,res.user])
+      setPatients([res.user, ...patients])
       toast.success(res.message)
     })
     .catch(err=>{
