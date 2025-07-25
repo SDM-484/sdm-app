@@ -65,7 +65,7 @@ function AddPatientModal({isAddPatientModalOpen,handleAddPatientCancel,handleAdd
 
   const uploadToS3 = async (file) => {
     try {
-      const fileKey = `patients/${months[date.getMonth()+1]}_${date.getDate}_${file.name}`;
+      const fileKey = `patients/${months[date.getMonth()+1]}_${date.getDate()}_${file.name}`;
       
       const params = {
         Bucket: process.env.NEXT_PUBLIC_AWS_BUCKET,
