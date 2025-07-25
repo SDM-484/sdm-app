@@ -60,10 +60,12 @@ function AddPatientModal({isAddPatientModalOpen,handleAddPatientCancel,handleAdd
   const handleUploadChange = ({ fileList }) => {
     setFileList(fileList);
   };
+  let date = new Date
+  let months= ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
   const uploadToS3 = async (file) => {
     try {
-      const fileKey = `patients/${Date.now()}_${file.name}`;
+      const fileKey = `patients/${months[date.getMonth()+1]}_${date.getDate}_${file.name}`;
       
       const params = {
         Bucket: process.env.NEXT_PUBLIC_AWS_BUCKET,
